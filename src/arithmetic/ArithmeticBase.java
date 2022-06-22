@@ -5,6 +5,7 @@
  */
 package arithmetic;
 
+import static com.sun.tools.javac.main.Option.X;
 import java.util.Scanner;
 
 /** This class takes String input plus,minus,divide and times
@@ -15,22 +16,28 @@ import java.util.Scanner;
  */
 public class ArithmeticBase 
 {
- public double x,y;
+ private double  x, y ;
+ public enum operation {PLUS, MINUS, MULT, DIV};
+
+        
     double calculate(double x, double y) 
         {
         Scanner sc =new Scanner(System.in);
-        System.out.println("Enter arithmetic operation to Perform: ");
+        System.out.println("Enter arithmetic operation (PLUS, MINUS, MULT, DIV) to Perform: ");
         String s= sc.next();
-        switch (s.toUpperCase()) 
+        switch (s.equals(operation())) 
         {
             case "PLUS":
                 return x + y;
+                
             case "MINUS":
                 return x - y;
-            case "TIMES":
+                
+            case "MULT":
                 return x * y;
-            case "DIVIDE":
+            case "DIV":
                 return x / y;
+               
             default:
                 throw new AssertionError("Unknown operations " + this);
         }
